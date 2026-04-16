@@ -10,7 +10,7 @@ function showNotification(type, message) {
   document.body.appendChild(notification);
 }
 
-const firstPromise = new Promise((resolve, reject) => {
+const promise1 = new Promise((resolve, reject) => {
   const logo = document.querySelector('.logo');
 
   if (logo) {
@@ -22,14 +22,14 @@ const firstPromise = new Promise((resolve, reject) => {
   }
 });
 
-firstPromise
+promise1
   .then((message) => showNotification('success', message))
   .catch((err) => showNotification('error', err.message));
 
-const secondPromise = new Promise((resolve, reject) => {
+const promise2 = new Promise((resolve, reject) => {
   setTimeout(() => reject(new Error('Promise was rejected!')), 3000);
 });
 
-secondPromise
+promise2
   .then((message) => showNotification('success', message))
   .catch((err) => showNotification('error', err.message));
